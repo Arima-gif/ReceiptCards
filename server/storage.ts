@@ -48,6 +48,13 @@ export class MemStorage implements IStorage {
         totalAmount: "12000",
         outstandingAmount: "8000",
         status: "completed",
+        salesmanName: "Muhammad Ahmad",
+        salesmanPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        salesmanMessage: "Customer paid full amount in cash. Receipt signed by manager.",
+        receiptPhotos: [
+          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=300&fit=crop"
+        ],
       },
       {
         receiptNumber: "56790",
@@ -62,6 +69,12 @@ export class MemStorage implements IStorage {
         totalAmount: "15000",
         outstandingAmount: "15000",
         status: "pending",
+        salesmanName: "Ali Hassan",
+        salesmanPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        salesmanMessage: "Credit transaction requires manager approval. Customer documents verified.",
+        receiptPhotos: [
+          "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=300&fit=crop"
+        ],
       },
       {
         receiptNumber: "56791",
@@ -76,6 +89,14 @@ export class MemStorage implements IStorage {
         totalAmount: "8500",
         outstandingAmount: "0",
         status: "completed",
+        salesmanName: "Fatima Khan",
+        salesmanPhoto: "https://images.unsplash.com/photo-1494790108755-2616b612b1-44?w=150&h=150&fit=crop&crop=face",
+        salesmanMessage: "Recovery amount collected successfully. All dues cleared.",
+        receiptPhotos: [
+          "https://images.unsplash.com/photo-1554224155-0c74527b5ab0?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop"
+        ],
       },
       {
         receiptNumber: "56792",
@@ -90,6 +111,12 @@ export class MemStorage implements IStorage {
         totalAmount: "30000",
         outstandingAmount: "20000",
         status: "overdue",
+        salesmanName: "Tariq Ahmed",
+        salesmanPhoto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+        salesmanMessage: "Partial payment received. Customer requested extended payment terms.",
+        receiptPhotos: [
+          "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=300&fit=crop"
+        ],
       },
     ];
 
@@ -160,7 +187,10 @@ export class MemStorage implements IStorage {
       creditAmount: insertReceipt.creditAmount || "0",
       recoveryAmount: insertReceipt.recoveryAmount || "0",
       outstandingAmount: insertReceipt.outstandingAmount || "0",
-      status: insertReceipt.status || "completed"
+      status: insertReceipt.status || "completed",
+      salesmanPhoto: insertReceipt.salesmanPhoto || null,
+      salesmanMessage: insertReceipt.salesmanMessage || null,
+      receiptPhotos: insertReceipt.receiptPhotos || []
     };
     this.receipts.set(id, receipt);
     return receipt;

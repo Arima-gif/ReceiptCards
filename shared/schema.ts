@@ -17,6 +17,11 @@ export const receipts = pgTable("receipts", {
   totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
   outstandingAmount: decimal("outstanding_amount", { precision: 10, scale: 2 }).default("0"),
   status: text("status").notNull().default("completed"), // 'completed', 'pending', 'overdue'
+  // Salesman information
+  salesmanName: text("salesman_name").notNull(),
+  salesmanPhoto: text("salesman_photo"), // URL to salesman's photo
+  salesmanMessage: text("salesman_message"), // Message from salesman
+  receiptPhotos: text("receipt_photos").array().default(sql`'{}'`), // Array of photo URLs
 });
 
 export const schedules = pgTable("schedules", {

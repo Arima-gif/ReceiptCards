@@ -155,7 +155,12 @@ export class MemStorage implements IStorage {
     const receipt: Receipt = { 
       ...insertReceipt, 
       id,
-      datetime: insertReceipt.datetime || new Date()
+      datetime: insertReceipt.datetime || new Date(),
+      vehicle: insertReceipt.vehicle || null,
+      creditAmount: insertReceipt.creditAmount || "0",
+      recoveryAmount: insertReceipt.recoveryAmount || "0",
+      outstandingAmount: insertReceipt.outstandingAmount || "0",
+      status: insertReceipt.status || "completed"
     };
     this.receipts.set(id, receipt);
     return receipt;
@@ -179,7 +184,10 @@ export class MemStorage implements IStorage {
     const schedule: Schedule = { 
       ...insertSchedule, 
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      email: insertSchedule.email || null,
+      autoDownload: insertSchedule.autoDownload || 0,
+      isActive: insertSchedule.isActive || 1
     };
     this.schedules.set(id, schedule);
     return schedule;

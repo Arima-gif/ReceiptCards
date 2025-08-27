@@ -39,8 +39,9 @@ export function ReceiptCard({ receipt, onReview, onShare, onPrint }: ReceiptCard
     }
   };
 
-  const formatCurrency = (amount: string) => {
-    return `${parseFloat(amount).toLocaleString()} PKR`;
+  const formatCurrency = (amount: string | null) => {
+    const numericAmount = amount ? parseFloat(amount) : 0;
+    return `${numericAmount.toLocaleString()} PKR`;
   };
 
   const formatDateTime = (datetime: Date | string) => {
@@ -123,11 +124,11 @@ export function ReceiptCard({ receipt, onReview, onShare, onPrint }: ReceiptCard
             </div>
             <div className="flex justify-between">
               <span className={cn(
-                parseFloat(receipt.outstandingAmount) > 0 ? "text-orange-600" : "text-green-600"
+                parseFloat(receipt.outstandingAmount || "0") > 0 ? "text-orange-600" : "text-green-600"
               )}>Outstanding:</span>
               <span className={cn(
                 "font-medium",
-                parseFloat(receipt.outstandingAmount) > 0 ? "text-orange-600" : "text-green-600"
+                parseFloat(receipt.outstandingAmount || "0") > 0 ? "text-orange-600" : "text-green-600"
               )} data-testid={`text-outstanding-${receipt.id}`}>
                 {formatCurrency(receipt.outstandingAmount)}
               </span>

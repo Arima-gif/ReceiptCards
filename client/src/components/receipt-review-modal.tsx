@@ -28,8 +28,9 @@ export function ReceiptReviewModal({
 }: ReceiptReviewModalProps) {
   if (!receipt) return null;
 
-  const formatCurrency = (amount: string) => {
-    return `${parseFloat(amount).toLocaleString()} PKR`;
+  const formatCurrency = (amount: string | null) => {
+    const numericAmount = amount ? parseFloat(amount) : 0;
+    return `${numericAmount.toLocaleString()} PKR`;
   };
 
   return (
